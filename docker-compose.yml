@@ -19,7 +19,7 @@ services:
     restart: unless-stopped
     environment:
       SERVICE_FQDN_WOODPECKER_8000: /
-      WOODPECKER_HOST: ${SERVICE_FQDN_WOODPECKER}
+      WOODPECKER_HOST: ${SERVICE_URL_WOODPECKER}
       WOODPECKER_OPEN: "false"
       WOODPECKER_ADMIN: jon8800
       WOODPECKER_GITHUB: "true"
