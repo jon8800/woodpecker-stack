@@ -29,6 +29,12 @@ services:
       - WOODPECKER_DATABASE_DRIVER=postgres
       - WOODPECKER_DATABASE_DATASOURCE=postgres://woodpecker:${POSTGRES_PASSWORD}@postgres:5432/woodpecker?sslmode=disable
       - WOODPECKER_LOG_LEVEL=info
+    labels:
+      # Force Traefik to route HTTP traffic to port 8000 (web UI) rather than
+      # the also-exposed port 9000 (gRPC for agent). Coolify auto-generates
+      # the router name as <scheme>-0-<app-uuid>-<compose-service>.
+      - "traefik.http.services.http-0-mih7wic8oouvanq0m0xmtiyl-woodpecker.loadbalancer.server.port=8000"
+      - "traefik.http.services.https-0-mih7wic8oouvanq0m0xmtiyl-woodpecker.loadbalancer.server.port=8000"
     expose:
       - "8000"
     ports:
