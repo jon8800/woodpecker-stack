@@ -29,6 +29,8 @@ services:
       WOODPECKER_DATABASE_DRIVER: postgres
       WOODPECKER_DATABASE_DATASOURCE: postgres://woodpecker:${POSTGRES_PASSWORD}@postgres:5432/woodpecker?sslmode=disable
       WOODPECKER_LOG_LEVEL: info
+    expose:
+      - "8000"
     ports:
       - "9000:9000"
     volumes:
